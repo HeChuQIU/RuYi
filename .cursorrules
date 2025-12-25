@@ -1,0 +1,43 @@
+# 项目全局规则
+
+## 文档规范
+
+### Markdown 文档绘图规范
+
+**所有 Markdown 文档中的图表必须使用 Mermaid 语法绘制。**
+
+- 禁止使用 ASCII 艺术图、纯文本图表或其他绘图方式
+- 所有流程图、架构图、时序图、类图等都应使用 Mermaid 代码块
+- Mermaid 代码块格式：使用 ````mermaid` 作为代码块标识符
+
+#### 示例
+
+正确的做法：
+````markdown
+```mermaid
+graph TD
+    A[前端] --> B[后端]
+    B --> C[数据库]
+```
+````
+
+错误的做法：
+````markdown
+```
+┌─────┐
+│前端 │
+└─────┘
+```
+````
+
+#### 支持的 Mermaid 图表类型
+
+- 流程图 (flowchart/graph)
+- 时序图 (sequenceDiagram)
+- 类图 (classDiagram)
+- 状态图 (stateDiagram)
+- 甘特图 (gantt)
+- 饼图 (pie)
+- 架构图 (graph)
+- 其他 Mermaid 支持的图表类型
+

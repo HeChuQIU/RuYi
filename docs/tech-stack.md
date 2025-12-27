@@ -10,7 +10,7 @@
 | pnpm | 最新 | 包管理器 |
 | Effect | 最新 | 类型安全的异步操作和错误处理库，用于替代 Promise，提供更好的类型安全和错误处理能力 |
 | Nuxt UI | 最新 | UI组件库，基于Tailwind CSS |
-| Vue Apollo | 最新 | GraphQL客户端，用于与后端GraphQL API通信 |
+| Vue Apollo | 最新 | GraphQL客户端，用于与后端GraphQL API通信。注意：必须使用 `@apollo/client/core` 导入路径以避免导入 React 依赖 |
 | Vue Router | 最新 | 路由管理库 |
 | Effect Schema | 最新 | 数据验证和转换库，与Effect库配合使用 |
 | dayjs | 最新 | 日期处理库 |

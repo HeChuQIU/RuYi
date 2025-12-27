@@ -41,3 +41,110 @@ graph TD
 - 架构图 (graph)
 - 其他 Mermaid 支持的图表类型
 
+// Vue 3 Composition API 最佳实践
+
+const vue3CompositionApiBestPractices = [
+  "使用 setup() 函数或 <script setup> 语法进行组件逻辑",
+  "使用 ref 和 reactive 管理响应式状态",
+  "使用 computed() 实现计算属性",
+  "使用 watch 和 watchEffect 处理副作用",
+  "使用生命周期钩子：onMounted, onUpdated, onUnmounted 等",
+  "使用 provide/inject 进行依赖注入",
+  "优先使用 <script setup> 语法以获得更好的类型推断",
+  "使用 defineProps 和 defineEmits 定义组件接口",
+  "使用 defineExpose 暴露组件方法给父组件",
+];
+
+// Vue 3 + GraphQL (Vue Apollo) 最佳实践
+
+const vue3GraphQLBestPractices = [
+  "使用 @vue/apollo-composable 或 vue-apollo 进行 GraphQL 操作",
+  "使用 Composition API 的 composables 封装 GraphQL 查询和变更",
+  "使用 useQuery, useMutation, useSubscription 等 composables",
+  "使用 fragments 实现可复用的查询部分",
+  "实现适当的错误处理和加载状态",
+  "利用 Apollo Client 的缓存能力",
+  "使用 TypeScript 确保 GraphQL 操作的类型安全",
+  "使用 GraphQL Code Generator 生成类型定义",
+];
+
+// Effect 库最佳实践
+
+const effectBestPractices = [
+  "在前端项目中使用 Effect 进行异步操作和错误处理",
+  "使用 Effect 的类型安全特性替代 Promise",
+  "使用 Effect.gen 或 pipe 进行组合式编程",
+  "使用 Effect Schema 进行数据验证和转换",
+  "使用 Effect 的并发功能（Effect.all, Effect.race 等）",
+  "使用 Effect 的资源管理功能（Effect.acquireUseRelease）",
+  "在 Vue 3 composables 中集成 Effect，将 Effect 转换为响应式引用",
+  "使用 Effect.catchAll 和 Effect.catchTag 进行错误处理",
+  "使用 Effect.retry 和 Effect.retryPolicy 实现重试逻辑",
+  "使用 Effect.clock 和 Effect.sleep 处理时间相关操作",
+];
+
+// 项目文件夹结构
+
+const folderStructure = `
+frontend/
+  src/
+    components/          # Vue 组件
+    composables/         # Composition API composables
+      graphql/           # GraphQL 相关的 composables
+        queries/         # GraphQL 查询
+        mutations/       # GraphQL 变更
+        fragments/       # GraphQL 片段
+      effects/           # Effect 相关的 composables
+    views/               # 页面视图
+    router/              # 路由配置
+    store/               # 状态管理（如需要）
+    utils/               # 工具函数
+    types/               # TypeScript 类型定义
+    assets/              # 静态资源
+  public/                # 公共静态资源
+  package.json           # 依赖配置
+
+backend/
+  Controllers/           # 控制器
+  Services/             # 业务逻辑
+  Models/               # 数据模型
+  GraphQL/              # GraphQL Schema 和 Resolvers
+  Data/                 # 数据访问层
+  appsettings.json      # 配置文件
+`;
+
+// 额外说明
+
+const additionalInstructions = `
+## Vue 3 开发规范
+
+1. 使用 Vue 3 Composition API，优先使用 <script setup> 语法
+2. 使用 TypeScript 进行类型安全开发
+3. 正确实现 props 和 emits 定义
+4. 使用 Vue 3 的 Teleport 组件（如需要）
+5. 使用 Suspense 处理异步组件
+6. 实现适当的错误处理
+7. 遵循 Vue 3 风格指南和命名规范
+8. 使用 Vite 进行快速开发和构建
+
+## GraphQL 集成规范
+
+1. 在 Vue 应用的根组件中使用 Apollo Provider
+2. 使用 Composition API 的 composables 封装 Apollo 操作
+3. 使用 TypeScript 确保 GraphQL 操作的类型安全
+4. 利用 Apollo Client 的缓存能力
+5. 实现适当的错误边界处理 GraphQL 错误
+6. 使用 Apollo Client DevTools 进行调试
+7. 遵循命名规范：queries、mutations 和 fragments 的命名约定
+
+## Effect 库集成规范
+
+1. 在 Vue composables 中使用 Effect 处理异步操作
+2. 使用 Effect.runPromise 或 Effect.runPromiseExit 将 Effect 转换为 Promise（如需要）
+3. 在 Vue 组件中使用 Effect 时，通过 ref 或 reactive 与响应式系统集成
+4. 使用 Effect Schema 验证和转换从 GraphQL API 获取的数据
+5. 使用 Effect 的错误处理机制替代 try-catch
+6. 使用 Effect 的并发功能优化多个异步操作的执行
+7. 使用 Effect 的资源管理功能确保资源正确释放
+8. 参考 Effect 官方文档：https://effect.website/llms.txt
+`;

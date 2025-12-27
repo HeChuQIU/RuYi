@@ -7,7 +7,22 @@
 | Vue | 3.x | 前端框架 |
 | TypeScript | 5.x | 类型安全的JavaScript超集 |
 | Vite | 最新 | 构建工具和开发服务器 |
+| pnpm | 最新 | 包管理器 |
 | Effect | 最新 | 类型安全的异步操作和错误处理库，用于替代 Promise，提供更好的类型安全和错误处理能力 |
+| Nuxt UI | 最新 | UI组件库，基于Tailwind CSS |
+| Vue Apollo | 最新 | GraphQL客户端，用于与后端GraphQL API通信 |
+| Vue Router | 最新 | 路由管理库 |
+| Effect Schema | 最新 | 数据验证和转换库，与Effect库配合使用 |
+| dayjs | 最新 | 日期处理库 |
+| Monaco Editor | 最新 | 代码编辑器（用于SQL编辑器模块） |
+| xlsx (SheetJS) | 最新 | Excel/CSV处理库（用于数据导入导出模块） |
+| lodash-es | 最新 | 工具函数库（ES模块版本，支持Tree-shaking） |
+| Vitest | 最新 | 测试框架 |
+| ESLint | 最新 | 代码检查工具 |
+| Prettier | 最新 | 代码格式化工具 |
+| Husky | 最新 | Git hooks管理 |
+| lint-staged | 最新 | 暂存文件检查 |
+| commitlint | 最新 | 提交信息规范检查 |
 
 ## 后端
 

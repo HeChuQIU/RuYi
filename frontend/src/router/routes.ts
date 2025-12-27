@@ -35,3 +35,17 @@ export const asyncRoutes: AppRouteRecordRaw[] = [
   // 后续添加业务路由
 ]
 
+/**
+ * 测试路由
+ */
+export const testRoutes: AppRouteRecordRaw[] = [
+  {
+    path: '/component-test',
+    name: 'ComponentTest',
+    component: () => import('@/views/ComponentTest.vue'),
+    meta: {
+      title: '组件测试',
+      requiresAuth: false,
+    },
+  },
+]

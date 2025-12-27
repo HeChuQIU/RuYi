@@ -4,7 +4,7 @@
 
 import { createRouter, createWebHistory } from 'vue-router'
 import type { Router } from 'vue-router'
-import { constantRoutes } from './routes'
+import { constantRoutes, testRoutes } from './routes'
 import { createAuthGuard, createPermissionGuard, createTitleGuard } from './guards'
 
 /**
@@ -13,7 +13,7 @@ import { createAuthGuard, createPermissionGuard, createTitleGuard } from './guar
 export function createAppRouter(): Router {
   const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
-    routes: constantRoutes,
+    routes: [...constantRoutes, ...testRoutes],
     scrollBehavior(to, from, savedPosition) {
       if (savedPosition) {
         return savedPosition

@@ -109,7 +109,7 @@ export function metadataToSchema(metadata: ModelMetadata): SchemaType<Record<str
     fields[field.name] = metadataFieldToSchema(field)
   }
 
-  return Schema.struct(fields)
+  return Schema.Struct(fields)
 }
 
 /**

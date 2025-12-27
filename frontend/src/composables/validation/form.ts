@@ -79,7 +79,7 @@ export function useFormValidation<T extends Record<string, unknown>>(
    * 验证单个字段
    */
   const validateField = async (field: keyof T): Promise<boolean> => {
-    const fieldSchema = Schema.struct({ [field as string]: (schema as any).fields[field] })
+    const fieldSchema = Schema.Struct({ [field as string]: (schema as any).fields[field] })
     try {
       await Effect.runPromise(
         Effect.gen(function* () {

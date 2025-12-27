@@ -28,6 +28,7 @@
     "@effect/schema": "^0.75.5",
     "@nuxt/ui": "^4.3.0",
     "@vue/apollo-composable": "^4.2.2",
+    "@vueuse/core": "^11.0.0",
     "dayjs": "^1.11.19",
     "effect": "^3.19.13",
     "graphql": "^16.12.0",

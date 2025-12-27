@@ -146,5 +146,5 @@ const additionalInstructions = `
 5. 使用 Effect 的错误处理机制替代 try-catch
 6. 使用 Effect 的并发功能优化多个异步操作的执行
 7. 使用 Effect 的资源管理功能确保资源正确释放
-8. 参考 Effect 官方文档：https://effect.website/llms.txt
+8. 参考 Effect 官方文档：/llms-full.txt
 `;

@@ -9,7 +9,7 @@
 | Vite | 最新 | 构建工具和开发服务器 |
 | pnpm | 最新 | 包管理器 |
 | Effect | 最新 | 类型安全的异步操作和错误处理库，用于替代 Promise，提供更好的类型安全和错误处理能力 |
-| Nuxt UI | 最新 | UI组件库，基于Tailwind CSS |
+| Nuxt UI | 最新 | UI组件库，基于Tailwind CSS，已配置中文 locale（zh_cn） |
 | Vue Apollo | 最新 | GraphQL客户端，用于与后端GraphQL API通信。注意：必须使用 `@apollo/client/core` 导入路径以避免导入 React 依赖 |
 | Vue Router | 最新 | 路由管理库 |
 | Effect Schema | 最新 | 数据验证和转换库，与Effect库配合使用 |
@@ -17,6 +17,7 @@
 | Monaco Editor | 最新 | 代码编辑器（用于SQL编辑器模块） |
 | xlsx (SheetJS) | 最新 | Excel/CSV处理库（用于数据导入导出模块） |
 | lodash-es | 最新 | 工具函数库（ES模块版本，支持Tree-shaking） |
+| VueUse | 最新 | Vue Composition API 工具库，提供常用的组合式函数（如防抖、节流等） |
 | Vitest | 最新 | 测试框架 |
 | ESLint | 最新 | 代码检查工具 |
 | Prettier | 最新 | 代码格式化工具 |

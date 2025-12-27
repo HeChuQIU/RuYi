@@ -305,12 +305,43 @@ import { onError } from '@apollo/client/link/error'
 - [ ] 安装和配置 Nuxt UI
 - [ ] 配置 Tailwind CSS
 - [ ] 配置主题和样式变量
+- [ ] 配置国际化（Locale）
 - [ ] 创建组件别名和快捷方式
 
 **文件：**
 - `src/composables/ui/config.ts`
 - `tailwind.config.js`
 - `nuxt.config.ts`（如果使用 Nuxt）或自定义配置
+- `src/App.vue`
+- `index.html`
+
+**重要配置说明：**
+
+**国际化（Locale）配置：**
+
+项目已配置中文 locale，确保日期格式等符合中国使用习惯：
+
+1. **在 `src/App.vue` 中配置 locale：**
+```vue
+<script setup lang="ts">
+import { zh_cn } from '@nuxt/ui/locale'
+</script>
+
+<template>
+  <UApp :locale="zh_cn">
+    <RouterView />
+  </UApp>
+</template>
+```
+
+2. **在 `index.html` 中设置 `lang` 属性：**
+```html
+<html lang="zh-CN">
+```
+
+3. **下拉框宽度配置：**
+
+为 `USelect` 组件添加 `:ui="{ content: 'min-w-fit' }"` 以确保下拉框内容宽度适应内容，避免文字被截断。
 
 **验收方法：**
 - [ ] **功能验收**
@@ -318,6 +349,8 @@ import { onError } from '@apollo/client/link/error'
   - [ ] Tailwind CSS 样式能够正确应用
   - [ ] 主题配置能够正确生效
   - [ ] 组件别名和快捷方式能够正常使用
+  - [ ] 日期格式显示为中文格式（yyyy-mm-dd）
+  - [ ] 下拉框宽度能够完整显示选项文字
 - [ ] **UI/UX 验收**
   - [ ] 组件样式符合设计规范
   - [ ] 响应式布局正常工作
@@ -347,118 +380,160 @@ import { onError } from '@apollo/client/link/error'
 ### 第三阶段：通用组件层（依赖框架集成）
 
 #### 3.1 基础 UI 组件
-- [ ] 封装 Nuxt UI 组件（统一接口）
-- [ ] 创建加载组件
-- [ ] 创建错误提示组件
-- [ ] 创建空状态组件
-- [ ] 创建确认对话框组件
+
+**Nuxt UI 已有组件（直接使用）：**
+- `UEmpty` - 空状态组件，支持标题、描述、图标、操作按钮等
+- `UModal` - 对话框组件，可用作确认对话框
+- `USkeleton` - 加载占位符组件
+- `UError` - 错误页面组件（主要用于错误页面）
+
+**需要实现的业务组件：**
+- [ ] 加载组件（Loading）- 基于 `USkeleton` 或 `UProgress` 创建业务特定的加载状态
+- [ ] 确认对话框组件（ConfirmDialog）- 基于 `UModal` 封装，提供确认/取消的快捷接口
 
 **文件：**
-- `src/components/ui/` 目录
 - `src/components/common/Loading.vue`
-- `src/components/common/Error.vue`
-- `src/components/common/Empty.vue`
 - `src/components/common/ConfirmDialog.vue`
+
+**说明：**
+- 直接使用 Nuxt UI 的 `UEmpty`、`UModal`、`USkeleton` 等组件，无需封装
+- 仅在需要业务特定逻辑时创建包装组件（如确认对话框的快捷接口）
 
 **验收方法：**
 - [ ] **功能验收**
-  - [ ] 所有基础 UI 组件能够正确渲染
-  - [ ] 组件 props 和 events 能够正确传递
+  - [ ] Nuxt UI 组件能够正确导入和使用
   - [ ] 加载组件能够正确显示加载状态
-  - [ ] 错误提示组件能够正确显示错误信息
-  - [ ] 空状态组件能够正确显示
   - [ ] 确认对话框能够正确显示和交互
+  - [ ] 确认对话框提供确认/取消的快捷接口
 - [ ] **UI/UX 验收**
   - [ ] 组件样式美观、一致
   - [ ] 组件交互流畅
-  - [ ] 组件在不同屏幕尺寸下显示正常
+  - [ ] 组件在 PC 端显示正常
   - [ ] 组件支持主题切换（如配置）
 
 #### 3.2 表单组件
-- [ ] 基于 Effect Schema 的动态表单组件
-- [ ] 各种字段类型组件（文本、数字、日期、选择等）
-- [ ] 表单验证显示组件
-- [ ] 表单布局组件
+
+**Nuxt UI 已有组件（直接使用）：**
+- `UForm` - 表单组件，支持多种验证库（包括 Effect Schema），支持 Standard Schema
+- `UFormField` - 表单字段组件，自动显示验证错误
+- `UInput`、`UInputNumber`、`UInputDate`、`UInputTime` - 各种输入组件
+- `USelect`、`USelectMenu` - 选择组件
+- `UTextarea` - 文本域组件
+- `UCheckbox`、`URadioGroup`、`USwitch` - 选择组件
+- `UFileUpload` - 文件上传组件
+- `UInputMenu` - 自动完成输入组件
+
+**需要实现的业务组件：**
+- [ ] 动态表单组件（DynamicForm）- 基于 Effect Schema 动态渲染表单字段
+- [ ] 表单布局组件（FormLayout）- 业务特定的表单布局
 
 **文件：**
 - `src/components/form/DynamicForm.vue`
-- `src/components/form/fields/` 目录
-- `src/components/form/FormField.vue`
 - `src/components/form/FormLayout.vue`
+
+**说明：**
+- 直接使用 Nuxt UI 的 `UForm`、`UFormField` 和各种输入组件
+- `UForm` 已支持 Effect Schema（通过 Standard Schema 接口）
+- 基于这些组件创建动态表单和表单布局组件
 
 **验收方法：**
 - [ ] **功能验收**
-  - [ ] 动态表单能够根据 Schema 正确渲染
-  - [ ] 各种字段类型组件能够正确显示和交互
-  - [ ] 表单验证能够正确触发和显示
+  - [ ] Nuxt UI 表单组件能够正确导入和使用
+  - [ ] 动态表单能够根据 Effect Schema 正确渲染
+  - [ ] 表单验证能够正确触发和显示（通过 `UFormField`）
   - [ ] 表单布局组件能够正确排列字段
   - [ ] 表单数据能够正确收集和提交
 - [ ] **UI/UX 验收**
   - [ ] 表单字段标签和提示清晰
   - [ ] 验证错误信息显示明确
   - [ ] 表单交互流畅
-  - [ ] 表单在不同屏幕尺寸下显示正常
+  - [ ] 表单在 PC 端显示正常
 - [ ] **集成验收**
-  - [ ] 表单能够与 Effect Schema 正确集成
+  - [ ] 表单能够与 Effect Schema 正确集成（通过 `UForm` 的 `schema` prop）
   - [ ] 表单能够与 GraphQL Mutation 正确集成
 
 #### 3.3 布局组件
-- [ ] 主布局组件
-- [ ] 侧边栏组件
-- [ ] 顶部导航组件
-- [ ] 面包屑组件
-- [ ] 页脚组件
+
+**Nuxt UI 已有组件（直接使用）：**
+- `UDashboardGroup` - Dashboard 布局容器，管理侧边栏状态
+- `UDashboardSidebar` - 侧边栏组件，支持折叠、调整大小、响应式
+- `UDashboardNavbar` - 导航栏组件
+- `UBreadcrumb` - 面包屑组件，支持图标、链接等
+- `UFooter` - 页脚组件
+- `UHeader` - 头部组件（如需要）
+
+**需要实现的业务组件：**
+- [ ] 主布局组件（MainLayout）- 整合 `UDashboardGroup`、`UDashboardSidebar`、`UDashboardNavbar` 等
 
 **文件：**
 - `src/components/layout/MainLayout.vue`
-- `src/components/layout/Sidebar.vue`
-- `src/components/layout/Header.vue`
-- `src/components/layout/Breadcrumb.vue`
-- `src/components/layout/Footer.vue`
+
+**说明：**
+- 直接使用 Nuxt UI 的 Dashboard 相关组件和布局组件
+- 创建主布局组件整合这些组件，提供统一的布局结构
+- 只考虑 PC 端 WEB，无需考虑移动端响应式
 
 **验收方法：**
 - [ ] **功能验收**
+  - [ ] Nuxt UI 布局组件能够正确导入和使用
   - [ ] 主布局能够正确包裹页面内容
-  - [ ] 侧边栏能够正确显示和折叠
-  - [ ] 顶部导航能够正确显示用户信息和菜单
-  - [ ] 面包屑能够正确显示当前路径
-  - [ ] 页脚能够正确显示
+  - [ ] 侧边栏能够正确显示和折叠（通过 `UDashboardSidebar`）
+  - [ ] 顶部导航能够正确显示用户信息和菜单（通过 `UDashboardNavbar`）
+  - [ ] 面包屑能够正确显示当前路径（通过 `UBreadcrumb`）
+  - [ ] 页脚能够正确显示（通过 `UFooter`）
 - [ ] **UI/UX 验收**
-  - [ ] 布局在不同屏幕尺寸下自适应
+  - [ ] 布局在 PC 端显示正常
   - [ ] 侧边栏折叠/展开动画流畅
   - [ ] 导航菜单交互流畅
   - [ ] 布局样式美观、一致
-- [ ] **响应式验收**
-  - [ ] 移动端布局正常显示
-  - [ ] 平板端布局正常显示
-  - [ ] 桌面端布局正常显示
 
 #### 3.4 通用业务组件
-- [ ] 数据表格组件（支持排序、分页、筛选）
-- [ ] 数据详情组件（动态渲染）
-- [ ] 搜索组件
-- [ ] 筛选组件
+
+**Nuxt UI 已有组件（直接使用）：**
+- `UTable` - 表格组件，基于 TanStack Table，支持：
+  - 排序（列排序）
+  - 分页（客户端/服务端）
+  - 筛选（列筛选、全局筛选）
+  - 行选择（单选/多选）
+  - 行展开
+  - 虚拟化（大数据集）
+  - 列固定
+  - 列显示/隐藏
+  - 加载状态
+  - 空状态
+- `UCommandPalette` - 命令面板组件，可用于搜索功能
+- `UInput` - 输入组件，可用于搜索框
+
+**需要实现的业务组件：**
+- [ ] 数据详情组件（DataDetail）- 动态渲染的业务组件
+- [ ] 搜索组件（SearchBar）- 业务特定的搜索组件（可基于 `UInput` 或 `UCommandPalette`）
+- [ ] 筛选组件（FilterPanel）- 业务特定的筛选面板
 
 **文件：**
-- `src/components/business/DataTable.vue`
 - `src/components/business/DataDetail.vue`
 - `src/components/business/SearchBar.vue`
 - `src/components/business/FilterPanel.vue`
 
+**说明：**
+- 直接使用 Nuxt UI 的 `UTable` 组件，无需自己实现表格功能
+- `UTable` 已支持排序、分页、筛选等所有常用功能
+- 创建业务特定的数据详情、搜索、筛选组件
+
 **验收方法：**
 - [ ] **功能验收**
-  - [ ] 数据表格能够正确显示数据
-  - [ ] 排序功能正常工作
-  - [ ] 分页功能正常工作
-  - [ ] 筛选功能正常工作
+  - [ ] Nuxt UI Table 组件能够正确导入和使用
+  - [ ] 表格能够正确显示数据（通过 `UTable`）
+  - [ ] 排序功能正常工作（通过 `UTable` 的排序 API）
+  - [ ] 分页功能正常工作（通过 `UTable` 的分页 API）
+  - [ ] 筛选功能正常工作（通过 `UTable` 的筛选 API）
   - [ ] 数据详情组件能够正确渲染
   - [ ] 搜索组件能够正确搜索
   - [ ] 筛选面板能够正确筛选数据
 - [ ] **UI/UX 验收**
   - [ ] 表格样式美观、易读
   - [ ] 交互操作流畅
-  - [ ] 加载状态正确显示
-  - [ ] 空状态正确显示
+  - [ ] 加载状态正确显示（通过 `UTable` 的 `loading` prop）
+  - [ ] 空状态正确显示（通过 `UTable` 的 `empty` prop）
 - [ ] **集成验收**
   - [ ] 组件能够与 GraphQL Query 正确集成
   - [ ] 组件能够与 Mock 数据正确集成
@@ -766,7 +841,7 @@ import { onError } from '@apollo/client/link/error'
 ## 开发里程碑
 
 - **里程碑 1**：✅ 完成基础设施层和框架集成层（阶段一、二）- **已完成并验收通过**
-- **里程碑 2**：完成通用组件层（阶段三）
+- **里程碑 2**：✅ 完成通用组件层（阶段三）- **已完成并验收通过**
 - **里程碑 3**：完成用户管理和模型管理模块（阶段四部分）
 - **里程碑 4**：完成元数据配置模块（阶段四部分）
 - **里程碑 5**：完成 SQL 编辑器和数据导入导出模块（阶段四部分）

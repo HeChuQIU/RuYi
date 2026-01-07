@@ -37,14 +37,14 @@
 
 ```mermaid
 graph LR
-    Metadata[元数据配置] --> Schema[GraphQL Schema]
+    Metadata[元数据配置] --> API[RESTful API]
     Metadata --> UI[前端界面]
     Metadata --> Validation[数据验证]
     Metadata --> Permission[权限控制]
 ```
 
 - **配置即应用**：通过元数据配置定义应用行为，无需编写大量代码
-- **自动生成**：根据元数据自动生成GraphQL API和前端界面
+- **自动生成**：根据元数据自动生成RESTful API和前端界面
 - **灵活扩展**：元数据可以随时修改，应用行为随之改变
 
 ### 模型驱动（Model-Driven）
@@ -53,7 +53,7 @@ graph LR
 graph TB
     Model[数据模型] --> Table[数据库表]
     Model --> CRUD[CRUD操作]
-    Model --> API[GraphQL API]
+    Model --> API[RESTful API]
 ```
 
 - **模型为中心**：以数据模型为中心，自动生成基础功能
@@ -97,7 +97,7 @@ sequenceDiagram
 1. **需求描述**：用户用自然语言描述数据需求（可选，可使用AI辅助）
 2. **模型定义**：创建模型，定义字段名称、类型、约束
 3. **表结构创建**：平台自动创建对应的数据库表
-4. **基础功能生成**：自动生成GraphQL API和基础CRUD操作
+4. **基础功能生成**：自动生成RESTful API和基础CRUD操作
 
 ### 2. 元数据配置流程
 
@@ -111,7 +111,7 @@ sequenceDiagram
     User->>AI: 描述页面需求（自然语言）
     AI->>Platform: 生成元数据配置建议
     User->>Platform: 配置元数据
-    Platform->>Platform: 生成GraphQL Schema
+    Platform->>Platform: 生成RESTful API
     Platform->>Frontend: 提供元数据配置
     Frontend->>Frontend: 动态渲染界面
 ```
@@ -122,7 +122,7 @@ sequenceDiagram
 2. **配置页面展示**：配置列表页、详情页、表单的展示方式
 3. **配置编辑规则**：设置字段的可编辑性、默认值、联动规则
 4. **配置权限**：设置字段级权限控制
-5. **自动生成**：平台根据元数据自动生成GraphQL Schema和前端界面
+5. **自动生成**：平台根据元数据自动生成RESTful API和前端界面
 
 ### 3. SQL代码扩展流程
 

@@ -50,12 +50,12 @@
   - 支持自定义导出字段
   - 支持数据筛选和排序
 
-### GraphQL API模块
+### RESTful API模块
 
-- **自动生成GraphQL Schema**：根据模型和元数据自动生成
-- **自动生成Resolvers**：自动生成CRUD操作的Resolvers
-- **API文档生成**：自动生成GraphQL API文档
-- **API测试工具**：集成GraphQL Playground进行API测试
+- **自动生成RESTful API端点**：根据模型和元数据自动生成
+- **自动生成Controllers**：自动生成CRUD操作的Controllers
+- **API文档生成**：自动生成RESTful API文档
+- **API测试工具**：提供API测试和调试功能
 
 ## AI功能模块
 

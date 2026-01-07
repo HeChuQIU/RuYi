@@ -5,8 +5,10 @@
 | 技术 | 版本 | 用途说明 |
 |------|------|----------|
 | Vue | 3.x | 前端框架 |
+| Element Plus | 最新 | UI组件库 |
 | TypeScript | 5.x | 类型安全的JavaScript超集 |
-| Vite | 最新 | 构建工具和开发服务器 |
+| Rspack | 最新 | 构建工具和开发服务器 |
+| Axios | 最新 | HTTP客户端，用于RESTful API请求 |
 
 ## 后端
 
@@ -19,7 +21,8 @@
 
 | 技术 | 版本 | 用途说明 |
 |------|------|----------|
-| GraphQL | 最新 | API查询语言和运行时 |
+| RESTful API | - | RESTful API规范，使用标准HTTP方法（GET/POST/PUT/DELETE） |
+| JWT | 最新 | 身份认证和授权 |
 
 ## 数据库
 

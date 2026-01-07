@@ -29,7 +29,7 @@
 - 🤖 **AI驱动开发**：集成OpenAI API，根据自然语言描述生成元数据配置和SQL代码
 - 📋 **元数据配置**：通过配置而非编码的方式定义数据模型、页面展示、字段规则等
 - 🔧 **SQL代码扩展**：支持自定义SQL代码实现复杂查询、数据处理和业务逻辑
-- 📊 **GraphQL API自动生成**：根据模型和元数据自动生成GraphQL Schema和Resolvers
+- 📊 **RESTful API自动生成**：根据模型和元数据自动生成RESTful API端点和Controllers
 - 🎨 **动态页面渲染**：前端根据元数据配置动态渲染表单、列表等组件
 - 🔐 **细粒度权限控制**：支持基于角色的权限控制（RBAC）和字段级权限控制
 
@@ -67,7 +67,7 @@ cd frontend
 npm install
 
 # 配置API端点（.env文件）
-VITE_API_URL=http://localhost:5000/graphql
+VITE_API_URL=http://localhost:5000/api
 
 # 启动开发服务器
 npm run dev
@@ -76,7 +76,7 @@ npm run dev
 ### 4. 访问应用
 
 - 前端：http://localhost:5173
-- GraphQL Playground：http://localhost:5000/graphql
+- 后端API：http://localhost:5000/api
 
 > 📖 更多详细信息请参考 [开发环境配置](docs/development/environment.md)
 
@@ -99,7 +99,7 @@ RuYi/
 │   ├── Controllers/       # 控制器
 │   ├── Services/          # 业务逻辑
 │   ├── Models/            # 数据模型
-│   ├── GraphQL/           # GraphQL Schema和Resolvers
+│   ├── Services/          # 业务逻辑服务
 │   ├── Data/              # 数据访问层
 │   └── appsettings.json   # 配置文件
 │
@@ -131,7 +131,8 @@ RuYi/
 
 - [开发环境](docs/development/environment.md) - 环境要求和配置
 - [开发规范](docs/development/coding-standards.md) - 代码规范和 Git 提交规范
-- [GraphQL API](docs/api/graphql-api.md) - API 文档
+- [分阶段开发计划](docs/development/phased-development.md) - 前端项目分阶段开发参考文档
+- [RESTful API](docs/api/restful-api.md) - API 文档
 
 ### 🚀 部署文档
 

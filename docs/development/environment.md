@@ -11,7 +11,7 @@
 
 - **IDE**：Visual Studio / Visual Studio Code
 - **数据库管理**：pgAdmin / DBeaver
-- **API测试**：GraphQL Playground / Postman
+- **API测试**：Postman / REST Client
 
 ## 环境配置
 
